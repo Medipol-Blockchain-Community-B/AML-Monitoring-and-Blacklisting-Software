@@ -1,7 +1,7 @@
 
 # AML Monitoring and Blacklisting
 
-  Kucuk hacimli alim-satim platformları ve NFT pazarlarında kara para aklamalarınin azaltılması amaci ile bir servis geliştirmekteyiz. Coinfirm, Elliptic ve Jumio gibi AML firmaları pazarda büyük firmalara hizmet etmektedir. Kucuk firmalar pazarda AML servislerinden mahrum kalmistir. Kara listeli hesaplar ile gecmiste iletişime gecilmesi durumunda ya da daha onceden iletişime gecmis iseler ve islemlerde anomali tespit edilirse hesaplar farkli seviyelerde şüpheli olur. Yuksek seviyede şüpheli olan hesaplar kara listeye eklenir ve islem yapmaları akilli kontrat ile engellenir.
+  Küçük hacimli alım-satım platformları ve NFT pazarlarında kara para aklama işlemlerinin azaltılması amacı ile bir servis geliştirmekteyiz. Coinfirm, Elliptic ve Jumio gibi AML firmaları pazarda büyük şirketlere hizmet etmektedir. Küçük firmalar pazarda AML servislerinden mahrum kalmıştır. Kara listeli hesaplar ile geçmişte iletişime geçilmesi durumunda hesaplar farklı seviyelerde şüpheli olarak işaretlenirler. Yüksek seviyeye sahip olan hesaplar da kara listeye eklenir ve gelecekte yapacakları işlemler engellenir.
 
 # Veritabanı
 
