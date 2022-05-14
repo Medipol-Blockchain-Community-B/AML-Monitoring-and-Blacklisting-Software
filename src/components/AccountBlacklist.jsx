@@ -97,11 +97,14 @@ function AccountBlacklist() {
           Features
         </a>
       </li>
+      <div>
       <li className="nav-item">
         <a className="nav-link" href="#">
           Pricing
         </a>
       </li>
+      </div>
+      
       <li className="nav-item dropdown">
         <a
           className="nav-link dropdown-toggle"
