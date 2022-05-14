@@ -1,42 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import { Fragment } from 'react'
-import { Popover, Transition, Disclosure, Menu } from '@headlessui/react'
-import { Chart } from "react-google-charts";
-import axios from "axios"
-import {
-  ChartBarIcon,
-  CursorClickIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from '@heroicons/react/outline'
+import { Disclosure } from '@headlessui/react'
 
   const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
+    { name: 'Dashboard', href: '#', current: false },
     { name: 'Blacklist', href: '#', current: false },
     { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false },
+    { name: 'Transactions', href: '#', current: true },
+    { name: 'Search', href: '#', current: false },
   ]
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-  ]
-  
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 
-  
-
 function TxBlacklist() {
 
+  // Export transactions data from etherscan with etherscanAPI
+  // (not completed) because we couldn't finished Dynamic Directory and Mapping 
   const[url, setUrl] = useState()
   const[ethdata, setEthdata] = useState([])
 
@@ -47,37 +28,28 @@ function TxBlacklist() {
   },[url])
 
      const data = [
-        {txHash: 'txHash',
-        blockNumber: 'Block Number',
-        timeStamp: 'timeStamp',
-        hash: 'hash',
-        nonce: 'nonce',
-        blockHash: 'blockHash',
-        transactionIndex: 'transactionIndex',
-        from: 'from',
-        to: 'to',
-        value: 'value',
-        gas: 'gas',
-        gasPrice: 'gasPrice',
-        isError: 'isError',
-        txreceipt_status: 'txreceipt_status',
-        contractAddress: 'contractAddress',
-        cumulativeGasUsed: 'cumulativeGasUsed',
-        gasUsed: 'gasUsed',
-        confirmations: 'confirmations'},
+        {txHash: '0x64f35dA4b9726FE03627e8A07EEcA338596efd04',
+        blockNumber: '13303187',
+        timeStamp: '1632682860',
+        hash: '0xc256f56a75ac537bf20c29c031b11777edd53f48d7ddfdcfd562c57abc6ed6da',
+        nonce: '615770',
+        blockHash: '0xd8227edbbae366ceced371cf2a2f2be73a5e806c3b2a00ac23a3d5bd2d4991c6',
+        transactionIndex: '7',
+        from: '0xf60c2ea62edbfe808163751dd0d8693dcb30019c',
+        to: '0x64f35da4b9726fe03627e8a07eeca338596efd04',
+        value: '38720000000000000',
+        gas: '207128',
+        gasPrice: '89000000000',
+        isError: '0',
+        txreceipt_status: '1',
+        contractAddress: '0x',
+        cumulativeGasUsed: '422158',
+        gasUsed: '21000',
+        confirmations: '1403595'},
       ];
-      
-       
+         
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -88,7 +60,7 @@ function TxBlacklist() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-8 w-8"
-                        src="logo.png"
+                        src="https://pbs.twimg.com/profile_images/1508587728862126081/B5QPX6B-_400x400.jpg"
                         alt="Workflow"
                       />
                     </div>
@@ -112,24 +84,6 @@ function TxBlacklist() {
                       </div>
                     </div>
                   </div>
-                  <div className="hidden md:block">
-                    <div className="ml-4 flex items-center md:ml-6">
-
-                      {/* Profile dropdown */}
-                      
-                    </div>
-                  </div>
-                  <div className="-mr-2 flex md:hidden">
-                    {/* Mobile menu button */}
-                    <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                      <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XIcon className="block h-6 w-6" aria-hidden="true" />
-                      ) : (
-                        <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                      )}
-                    </Disclosure.Button>
-                  </div>
                 </div>
               </div>
 
@@ -149,20 +103,6 @@ function TxBlacklist() {
                       {item.name}
                     </Disclosure.Button>
                   ))}
-                </div>
-                <div className="pt-4 pb-3 border-t border-gray-700">
-                  <div className="mt-3 px-2 space-y-1">
-                    {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
                 </div>
               </Disclosure.Panel>
             </>
@@ -373,16 +313,9 @@ function TxBlacklist() {
             </div>
           </div>
         </div>  
-            {/* Replace with your content */}
-            {/* /End replace */}
       </div>
     </main>
   </div>
 </>
-
-  
-)
- 
-}
-
+)}
 export default TxBlacklist

@@ -3,8 +3,8 @@ import { Fragment } from 'react'
 import { Popover, Transition, Disclosure, Menu } from '@headlessui/react'
 
   const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Blacklist', href: '#', current: false },
+    { name: 'Dashboard', href: '#', current: false },
+    { name: 'Blacklist', href: '#', current: true },
     { name: 'Accounts', href: '#', current: false },
     { name: 'Transactions', href: '#', current: false },
     { name: 'Search', href: '#', current: false },
@@ -15,19 +15,7 @@ import { Popover, Transition, Disclosure, Menu } from '@headlessui/react'
   }
 
 function Blacklist() {
-
-     const data = [
-        ["Task", "Hours per Day"],
-        ["USDT-BAN", 11],
-        ["USDC-BAN", 2],
-        ["Sandwich Attack", 2],
-        ["Suspicious Behavior", 2],
-      ];
-      
-       const options = {
-        title: "Suspicious Transactions",
-        is3D: true,
-      };
+  
   return (
     <>
       <div className="min-h-full">
