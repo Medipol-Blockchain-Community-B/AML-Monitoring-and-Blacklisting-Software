@@ -33,7 +33,7 @@ exports = async function(payload) {
 exports = async function() {
    const mongodb = context.services.get("mongodb-atlas");
    const mycollection = mongodb.db("blacklist").collection("bl");
-   return await mycollection.find().limit(30);
+   return await mycollection.find().limit(20);
    
 }
 
