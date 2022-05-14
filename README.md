@@ -2,6 +2,18 @@
 # AML Monitoring and Blacklisting
 
   Küçük hacimli alım-satım platformları ve NFT pazarlarında kara para aklama işlemlerinin azaltılması amacı ile bir servis geliştirmekteyiz. Coinfirm, Elliptic ve Jumio gibi AML firmaları pazarda büyük şirketlere hizmet etmektedir. Küçük firmalar pazarda AML servislerinden mahrum kalmıştır. Kara listeli hesaplar ile geçmişte iletişime geçilmesi durumunda hesaplar farklı seviyelerde şüpheli olarak işaretlenirler. Yüksek seviyeye sahip olan hesaplar da kara listeye eklenir ve gelecekte yapacakları işlemler engellenir.
+# Kurulum
+Front-end, React.js üzerinden geliştirildiği için Node.js kurulumu gereklidir.
+https://nodejs.org/en/
+# React framework Kurulumu
+````
+npm install -g create-react-app
+````
+# Tüm Package'ları İndirmek için Kullanılması Gereken Command  
+--force commandı kullanılmalıdır çünkü kullandığımız react sürümü önerilen sürümden yüksek bir sürüm.
+````
+npm install --force
+````
 
 # Veritabanı
 
