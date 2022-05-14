@@ -1,10 +1,9 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Fragment } from 'react'
 import { Popover, Transition, Disclosure, Menu } from '@headlessui/react'
 import { Chart } from "react-google-charts";
+import axios from "axios"
 import {
-  BookmarkAltIcon,
-  CalendarIcon,
   ChartBarIcon,
   CursorClickIcon,
   MenuIcon,
@@ -15,12 +14,7 @@ import {
   SupportIcon,
   ViewGridIcon,
   XIcon,
-  ChevronDownIcon,
-  BellIcon
 } from '@heroicons/react/outline'
-
-
-
 
   const navigation = [
     { name: 'Dashboard', href: '#', current: true },
@@ -39,25 +33,30 @@ import {
     return classes.filter(Boolean).join(' ')
   }
 
+  const Etherscan_Data = () => {
+    
+  }
+
 function TxBlacklist() {
      const data = [
-        {blockNumber: 'Block Number'},
-        {timeStamp: 'timeStamp'},
-        {hash: 'hash'},
-        {nonce: 'nonce'},
-        {blockHash: 'blockHash'},
-        {transactionIndex: 'transactionIndex'},
-        {from: 'from'},
-        {to: 'to'},
-        {value: 'value'},
-        {gas: 'gas'},
-        {gasPrice: 'gasPrice'},
-        {isError: 'isError'},
-        {txreceipt_status: 'txreceipt_status'},
-        {contractAddress: 'contractAddress'},
-        {cumulativeGasUsed: 'cumulativeGasUsed'},
-        {gasUsed: 'gasUsed'},
-        {confirmations: 'confirmations'},
+        {txHash: 'txHash',
+        blockNumber: 'Block Number',
+        timeStamp: 'timeStamp',
+        hash: 'hash',
+        nonce: 'nonce',
+        blockHash: 'blockHash',
+        transactionIndex: 'transactionIndex',
+        from: 'from',
+        to: 'to',
+        value: 'value',
+        gas: 'gas',
+        gasPrice: 'gasPrice',
+        isError: 'isError',
+        txreceipt_status: 'txreceipt_status',
+        contractAddress: 'contractAddress',
+        cumulativeGasUsed: 'cumulativeGasUsed',
+        gasUsed: 'gasUsed',
+        confirmations: 'confirmations'},
       ];
       
        const options = {
@@ -174,14 +173,6 @@ function TxBlacklist() {
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 
           <div class="grid grid-cols-1 divide-y">
-          <div className="px-6 py-2 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                    <p>Grade 1: Suspicios Behavior</p>
-                    <p>Grade 2: Blacklisted Address</p>
-                    <p>Grade 3: Suspicios Behavior & Blacklisted Address </p>
-                </div>
-                
-
-              
                   <div> 
                     <div className='pb-6'> 
                       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -193,29 +184,182 @@ function TxBlacklist() {
                                 <Fragment>
                                   <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={i} >
                                  
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 font-bold text-lg">
                                       Tx Hash
                                     </td>
                                     <td class="px-6 py-4">
-                                        
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Inspect</a>
+                                        {item.txHash}
                                     </td>
                                 </tr>
                                 <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
                                  
-                                    <td class="px-6 py-4">
-                                      Block Number
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      blockNumber
                                     </td>
                                     <td class="px-6 py-4">
-                                        
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Inspect</a>
-                                    </td>
+                                        {item.blockNumber}
+                                    </td>       
                                 </tr>
-                              
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      timeStamp
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.timeStamp}
+                                    </td>       
+                                </tr>
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      hash
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.hash}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      nonce
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.nonce}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      blockHash
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.blockHash}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      transactionIndex
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.transactionIndex}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      from
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.from}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      to
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.to}
+                                    </td>       
+                                </tr>  
+
+                                  <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      value
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.value}
+                                    </td>       
+                                </tr>
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      gas
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.gas}
+                                    </td>       
+                                </tr>
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      gasPrice
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.gasPrice}
+                                    </td>       
+                                </tr>  
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      isError
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.isError}
+                                    </td>       
+                                </tr>  
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      txreceipt_status
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.txreceipt_status}
+                                    </td>       
+                                </tr>  
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      input
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.input}
+                                    </td>       
+                                </tr>    
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      contractAddress
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.contractAddress}
+                                    </td>       
+                                </tr>    
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      cumulativeGasUsed
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.cumulativeGasUsed}
+                                    </td>       
+                                </tr>    
+
+                                <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" >
+                                 
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                      gasUsed
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.confirmations}
+                                    </td>       
+                                </tr>                                              
                                 </Fragment>
                           )})}   
                   </tbody>
