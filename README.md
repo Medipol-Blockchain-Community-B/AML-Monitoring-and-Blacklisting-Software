@@ -10,7 +10,7 @@ https://nodejs.org/en/
 npm install -g create-react-app
 ````
 # Tüm Package'ları İndirmek için Kullanılması Gereken Command  
-Önerilen sürümden daha yüksek bir react sürümü kullanıldığın dolayı kurulum sırasında --force komutu kullanılmalıdır.
+Önerilen sürümden daha yüksek bir react sürümü kullanıldığından dolayı kurulum sırasında --force komutu kullanılmalıdır.
 ````
 npm install --force
 ````
