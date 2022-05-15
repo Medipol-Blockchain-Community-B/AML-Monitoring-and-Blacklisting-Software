@@ -10,7 +10,7 @@ https://nodejs.org/en/
 npm install -g create-react-app
 ````
 # Tüm Package'ları İndirmek için Kullanılması Gereken Command  
---force commandı kullanılmalıdır çünkü kullandığımız react sürümü önerilen sürümden yüksek bir sürüm.
+Önerilen sürümden daha yüksek bir react sürümü kullanıldığın dolayı kurulum sırasında --force komutu kullanılmalıdır.
 ````
 npm install --force
 ````
@@ -38,14 +38,14 @@ exports = async function(payload) {
 
 ```
 
-  Bir diğer fonksiyon ise veritabanında bulunan 250,000 kayıttan 40 adetini almaya yarayan 'get_data' fonksiyonudur. Bu fonksiyon da bir GET olarak veritabanından 20 adet yasaklanmış cüzdan adresi çekilmesine yardım etmektedir.
+  Bir diğer fonksiyon ise veritabanında bulunan 250,000 kayıttan 30 adetini alan 'get_data' fonksiyonudur. Bu fonksiyon da bir GET olarak veritabanından 30 adet yasaklanmış cüzdan adresi çekilmesine yardım etmektedir.
   
 ```js
 
 exports = async function() {
    const mongodb = context.services.get("mongodb-atlas");
    const mycollection = mongodb.db("blacklist").collection("bl");
-   return await mycollection.find().limit(20);
+   return await mycollection.find().limit(30);
    
 }
 
